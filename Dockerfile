@@ -27,7 +27,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN cp config/default.example.yml config/default.yml
+RUN cp config/default.example.yml config/production.yml
 
 CMD [ "npm", "start" ]
 
