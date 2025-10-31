@@ -1,0 +1,60 @@
+log:
+  filename: LOG_FILENAME
+  level: LOG_LEVEL
+  stdout: LOG_STDOUT
+  gladiaProxy: LOG_GLADIA_PROXY
+
+redis:
+  host: REDIS_HOST
+  port: REDIS_PORT
+  password: REDIS_PASSWORD
+  publishChannel: REDIS_PUBLISH_CHANNEL
+
+includePartialResults: INCLUDE_PARTIAL_RESULTS
+
+disconnectOnSilence: DISCONNECT_ON_SILENCE
+closeConnectionAfterSeconds: CLOSE_CONNECTION_AFTER_SECONDS
+
+sampleRate: SAMPLE_RATE
+
+vosk:
+  startMessage: VOSK_START_MESSAGE
+  endMessage: VOSK_END_MESSAGE
+  servers:
+    en-US: VOSK_SERVER_EN_US
+    es-ES: VOSK_SERVER_ES_ES
+    pt-BR: VOSK_SERVER_PT_BR
+    fr-FR: VOSK_SERVER_FR_FR
+
+gladia:
+  apiUrl: GLADIA_API_URL
+  key: GLADIA_KEY
+  bitDepth: GLADIA_BIT_DEPTH
+  modelType: GLADIA_MODEL_TYPE
+  endpointing: GLADIA_ENDPOINTING
+  maxBeforeEndpointing: GLADIA_MAX_BEFORE_ENDPOINTING
+  minConfidence: GLADIA_MIN_CONFIDENCE
+  hint: GLADIA_HINT
+  server: GLADIA_SERVER
+  startMessage: GLADIA_START_MESSAGE
+  endMessage: GLADIA_END_MESSAGE
+  translation:
+    enabled: GLADIA_TRANSLATION_ENABLED
+    languages:
+      __name: GLADIA_TRANSLATION_LANGUAGES
+      __format: json
+    minConfidence: GLADIA_TRANSLATION_MIN_CONFIDENCE
+  proxy:
+    enabled: GLADIA_PROXY_ENABLED
+    address: GLADIA_PROXY_ADDRESS
+    minPartialDuration: GLADIA_PROXY_MIN_PARTIAL_DURATION
+
+whispering:
+  startMessage: WHISPERING_START_MESSAGE
+  endMessage: WHISPERING_END_MESSAGE
+  server: WHISPERING_SERVER
+
+freeswitch:
+  ip: FREESWITCH_IP
+  port: FREESWITCH_PORT
+  password: FREESWITCH_PASSWORD
