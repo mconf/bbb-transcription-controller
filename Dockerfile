@@ -1,20 +1,28 @@
-#
-# To build: docker build -t bigbluebutton/transcription-controller .
-# To run: docker run -d --name bbb-transcription-controller --restart always -v $(pwd)/default.yml:/app/config/default.yml docker.io/mconf/bbb-transcription-controller:latest
+FROM node:22-slim AS builder
 
-FROM node:18-slim
-
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 WORKDIR /app
 
+RUN apt-get update \
+ && apt-get -y install build-essential python3
+
 COPY package.json package-lock.json /app/
 
-RUN npm install \
+RUN npm ci --omit=dev \
  && npm cache clear --force
 
-COPY . /app
+FROM node:22-slim
 
-RUN cp config/default.example.yml config/default.yml
+ENV NODE_ENV=production
+
+COPY --from=builder /app /app
+
+WORKDIR /app
+
+COPY . .
+
+RUN cp config/default.example.yml config/production.yml
 
 CMD [ "npm", "start" ]
+
