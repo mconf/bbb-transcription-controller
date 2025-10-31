@@ -161,6 +161,7 @@ const getApiEndpoint = async (language, sampleRate, partialUtterances) => {
     },
     pre_processing: {
       audio_enhancer: true,
+      speech_threshold: 0.7,
     },
     realtime_processing: {
       translation: TRANSLATION_ENABLED,
@@ -175,6 +176,8 @@ const getApiEndpoint = async (language, sampleRate, partialUtterances) => {
       },
     },
   };
+  const options_str = JSON.stringify(options);
+  console.log(`Posting to Gladia with options: ${options_str}`);
 
   const response = await fetch(API_URL, {
     method: 'POST',
@@ -182,7 +185,7 @@ const getApiEndpoint = async (language, sampleRate, partialUtterances) => {
       'Content-Type': 'application/json',
       'X-Gladia-Key': API_KEY,
     },
-    body: JSON.stringify(options),
+    body: options_str,
   });
   if (!response.ok) {
     // Look at the error message
