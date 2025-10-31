@@ -19,7 +19,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '20'
+        node-version: '22'
 
     - name: Get triggering user's email
       run: |
@@ -28,16 +28,15 @@ jobs:
           user_email="github-actions@github.com"
         fi
         echo "user_email=$user_email" >> $GITHUB_ENV
-    
+
     - name: Configure Git with the triggering user's info
       run: |
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
 
-
     - name: Bump version and push tag
       run: |
-        npm install
+        npm ci
         npm version ${{ github.event.inputs.release_type }} -m "chore: bump version to %s"
         git push --follow-tags
       env:
