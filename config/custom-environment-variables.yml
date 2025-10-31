@@ -1,7 +1,9 @@
 log:
   filename: LOG_FILENAME
   level: LOG_LEVEL
-  stdout: LOG_STDOUT
+  stdout:
+    __name: LOG_STDOUT
+    __format: boolean
   gladiaProxy: LOG_GLADIA_PROXY
 
 redis:
@@ -10,10 +12,16 @@ redis:
   password: REDIS_PASSWORD
   publishChannel: REDIS_PUBLISH_CHANNEL
 
-includePartialResults: INCLUDE_PARTIAL_RESULTS
+includePartialResults:
+  __name: INCLUDE_PARTIAL_RESULTS
+  __format: boolean
 
-disconnectOnSilence: DISCONNECT_ON_SILENCE
-closeConnectionAfterSeconds: CLOSE_CONNECTION_AFTER_SECONDS
+disconnectOnSilence:
+  __name: DISCONNECT_ON_SILENCE
+  __format: boolean
+closeConnectionAfterSeconds:
+  __name: CLOSE_CONNECTION_AFTER_SECONDS
+  __format: number
 
 sampleRate: SAMPLE_RATE
 
@@ -29,25 +37,41 @@ vosk:
 gladia:
   apiUrl: GLADIA_API_URL
   key: GLADIA_KEY
-  bitDepth: GLADIA_BIT_DEPTH
+  bitDepth:
+    __name: GLADIA_BIT_DEPTH
+    __format: number
   modelType: GLADIA_MODEL_TYPE
-  endpointing: GLADIA_ENDPOINTING
-  maxBeforeEndpointing: GLADIA_MAX_BEFORE_ENDPOINTING
-  minConfidence: GLADIA_MIN_CONFIDENCE
+  endpointing:
+    __name: GLADIA_ENDPOINTING
+    __format: number
+  maxBeforeEndpointing:
+    __name: GLADIA_MAX_BEFORE_ENDPOINTING
+    __format: number
+  minConfidence:
+    __name: GLADIA_MIN_CONFIDENCE
+    __format: number
   hint: GLADIA_HINT
   server: GLADIA_SERVER
   startMessage: GLADIA_START_MESSAGE
   endMessage: GLADIA_END_MESSAGE
   translation:
-    enabled: GLADIA_TRANSLATION_ENABLED
+    enabled:
+      __name: GLADIA_TRANSLATION_ENABLED
+      __format: boolean
     languages:
       __name: GLADIA_TRANSLATION_LANGUAGES
       __format: json
-    minConfidence: GLADIA_TRANSLATION_MIN_CONFIDENCE
+    minConfidence:
+      __name: GLADIA_TRANSLATION_MIN_CONFIDENCE
+      __format: number
   proxy:
-    enabled: GLADIA_PROXY_ENABLED
+    enabled:
+      __name: GLADIA_PROXY_ENABLED
+      __format: boolean
     address: GLADIA_PROXY_ADDRESS
-    minPartialDuration: GLADIA_PROXY_MIN_PARTIAL_DURATION
+    minPartialDuration:
+      __name: GLADIA_PROXY_MIN_PARTIAL_DURATION
+      __format: number
 
 whispering:
   startMessage: WHISPERING_START_MESSAGE
@@ -56,5 +80,7 @@ whispering:
 
 freeswitch:
   ip: FREESWITCH_IP
-  port: FREESWITCH_PORT
+  port:
+    __name: FREESWITCH_PORT
+    __format: number
   password: FREESWITCH_PASSWORD
